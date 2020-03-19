@@ -1,0 +1,112 @@
+// Slider js
+	$('.toppicks').owlCarousel({
+		//loop: true,
+		autoplay:false,
+		items: 4,
+		dots: true,
+		 margin: 25,
+		nav: true,
+		navText: [
+		  '<i class="fas fa-chevron-left" aria-hidden="true"></i>',
+		  '<i class="fas fa-chevron-right" aria-hidden="true"></i>'
+		],
+		responsiveClass: true,
+		smartSpeed: 200,
+		slideSpeed: 500,
+		slideBy: 1,
+		responsiveRefreshRate: 100,
+		 responsive: {
+			 0: {
+				 items: 1,
+				 nav: true
+			 },
+			 576: {
+				 items: 2,
+				 nav: true
+			 },
+			 767: {
+				 items: 3,
+				 nav: true
+			 },
+			 1000: {
+				 items: 4,
+			 }
+		 }
+	});
+
+
+///// show, hide add and remove class
+$(document).ready(function(){
+  $("#AddShipment").click(function(){
+	$('.ManagerOrder .fa-minus').addClass('Showicon');
+  	$('.ManagerOrder .fa-plus').addClass('Hideicon');
+    $(".AddShipmentDetails").show();
+  });
+  $("#CloseBtn").click(function(){
+	$('.ManagerOrder .fa-minus').removeClass('Showicon');
+  	$('.ManagerOrder .fa-plus').removeClass('Hideicon');
+    $(".AddShipmentDetails").hide();
+  });
+});
+// Dropdown on click no hide
+	$('.dropdown-menu.noHide').on('click', function(event){
+		event.stopPropagation();
+	});
+//on scroll div add class
+  $(window).on("scroll", function () {
+         if ($(window).scrollTop() >= 70) {
+             $(".OverviewRight").addClass("headerfixed");
+         } else {
+             $(".OverviewRight").removeClass("headerfixed");
+         }
+	});	
+
+// a seprat div on scroll add class
+$(document).ready(function() {
+	var s = $(".sticker");
+	var pos = s.position();					   
+	$(".sticker").scroll(function() {
+		var windowpos = $(".sticker").scrollTop();
+		if (windowpos >= pos.top & windowpos <=1000) {
+			s.addClass("stick");
+		} else {
+			s.removeClass("stick");	
+		}
+	});
+});
+
+$(".header").scroll(function() {    
+    var scroll = $(".header").scrollTop();
+
+    if(scroll >= 50) {
+        $(".header").addClass("change");
+    } else {
+        $(".header").removeClass("change");
+    }
+});
+
+// Per page Nav Active
+$(document).ready(function () {
+        var url = window.location;
+    // Will only work if string in href matches with location
+        $('ul.navbar-nav a[href="' + url + '"]').parent().addClass('active');
+    // Will also work for relative and absolute hrefs
+        $('ul.navbar-nav a').filter(function () {
+            return this.href == url;
+        }).parent().addClass('active');
+    });
+
+// Dropdown menu ckick to open sub
+$( function() {
+    $(".dropdown span").click( function() {
+		$( this ).parent().toggleClass('open').siblings().removeClass( "open" );
+    });
+
+/// Add class parent
+$( function() {
+    $(".DislayBox #SubmitBtn").click( function() {
+		//$('.DislayBox').addClass('close')
+		 $( this ).parent().parent().parent().addClass('close');
+    });
+  });
+  });
